@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro - AGROSPACE ANDES</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f5ef;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .contenedor {
+            max-width: 400px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #315c3b;
+        }
+
+        input {
+            width: 100%;
+            padding: 11px;
+            margin: 9px 0 17px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #477c4f;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        a {
+            color: #315c3b;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+    <h2>Crear una cuenta</h2>
+
+    <form method="POST">
+        <label>Nombre completo</label>
+        <input type="text" name="nombre" required>
+
+        <label>Correo electrónico</label>
+        <input type="email" name="correo" required>
+
+        <label>Contraseña</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Registrarse</button>
+    </form>
+
+    <p>¿Ya tienes una cuenta? <a href="/login">Inicia sesión</a></p>
+    <p><a href="/">Volver al inicio</a></p>
+</div>
+
+</body>
+</html>

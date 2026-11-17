@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro agrícola - AGROSPACE ANDES</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f5ef;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .contenedor {
+            max-width: 500px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #315c3b;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 7px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: #477c4f;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        a {
+            color: #315c3b;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+    <h2>{{ 'Editar cultivo' if cultivo else 'Registrar cultivo' }}</h2>
+
+    <form method="POST">
+        <label>Nombre del terreno</label>
+        <input type="text" name="terreno"
+               value="{{ cultivo['terreno'] if cultivo else '' }}" required>
+
+        <label>Tipo de cultivo</label>
+        <input type="text" name="cultivo"
+               value="{{ cultivo['cultivo'] if cultivo else '' }}" required>
+
+        <label>Área en hectáreas</label>
+        <input type="number" name="area" step="0.01" min="0.01"
+               value="{{ cultivo['area'] if cultivo else '' }}" required>
+
+        <label>Observaciones</label>
+        <textarea name="observaciones" rows="4">{{ cultivo['observaciones'] if cultivo else '' }}</textarea>
+
+        <button type="submit">Guardar información</button>
+    </form>
+
+    <p><a href="/panel">Volver al panel</a></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel - AGROSPACE ANDES</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f5ef;
+            margin: 0;
+        }
+
+        header {
+            background: #315c3b;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 35px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 10px;
+        }
+
+        .boton {
+            display: inline-block;
+            padding: 10px 16px;
+            background: #477c4f;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        .salir {
+            background: #8b4545;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #e3eee3;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>AGROSPACE ANDES</h1>
+    <p>Panel de administración agrícola</p>
+</header>
+
+<main>
+    <h2>Bienvenido, {{ session['nombre'] }}</h2>
+
+    <p>Desde aquí puedes administrar la información de tus terrenos y cultivos.</p>
+
+    <a class="boton" href="/cultivos/nuevo">Registrar cultivo</a>
+    <a class="boton salir" href="/logout">Cerrar sesión</a>
+
+    <h3>Mis registros agrícolas</h3>
+
+    <table>
+        <tr>
+            <th>Terreno</th>
+            <th>Cultivo</th>
+            <th>Área (hectáreas)</th>
+            <th>Observaciones</th>
+            <th>Acciones</th>
+        </tr>
+
+        {% for cultivo in cultivos %}
+        <tr>
+            <td>{{ cultivo['terreno'] }}</td>
+            <td>{{ cultivo['cultivo'] }}</td>
+            <td>{{ cultivo['area'] }}</td>
+            <td>{{ cultivo['observaciones'] }}</td>
+            <td>
+                <a href="/cultivos/editar/{{ cultivo['id'] }}">Editar</a>
+                |
+                <a href="/cultivos/eliminar/{{ cultivo['id'] }}"
+                   onclick="return confirm('¿Deseas eliminar este registro?')">
+                   Eliminar
+                </a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5">Todavía no tienes registros agrícolas.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</main>
+
+</body>
+</html>
